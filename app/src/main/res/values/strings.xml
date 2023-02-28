@@ -5,4 +5,8 @@
     <string name="height">Tinggi</string>
     <string name="result">Hasil</string>
     <string name="calculate">Calculate</string>
+    <string name="kembali">kembali</string>
+    <string name="click_me">Click Me</string>
+    <string name="open_camera">Open Camera</string>
+    <string name="pindah_activity">Pindah Activity</string>
 </resources>

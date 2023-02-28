@@ -1,5 +1,8 @@
 package com.example.androiddasarsatu
 
+import android.app.Notification.Action
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +17,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var edtLength: EditText
     private lateinit var btnCalculate: Button
     private lateinit var tvResult: TextView
+    private lateinit var btnPindah : Button
+    private lateinit var btnOpnCamera : Button
 
     companion object{
         private const val STATE_RESULT = "state_result"
@@ -28,9 +33,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         edtHeight = findViewById(R.id.edt_height)
         edtLength = findViewById(R.id.edit_length)
         btnCalculate = findViewById(R.id.btn_calculate)
+        btnPindah = findViewById(R.id.pindah)
+        btnOpnCamera = findViewById(R.id.opn_Camera)
         tvResult = findViewById(R.id.tv_result)
 
         btnCalculate.setOnClickListener(this)
+        btnPindah.setOnClickListener(this)
+        btnOpnCamera.setOnClickListener(this)
 
         if (savedInstanceState != null){
             val result = savedInstanceState.getString(STATE_RESULT)
@@ -71,8 +80,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val volume = inputLength.toDouble() * inputWidth.toDouble() * inputHeight.toDouble()
                 tvResult.text = volume.toString()
             }
+        }
 
+        if (p0?.id == R.id.pindah){
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
 
+        if (p0?.id == R.id.opn_Camera){
+            val phoneNumber = "089601036313"
+            val dialPhoneNumber = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            startActivity(dialPhoneNumber)
         }
     }
 }
